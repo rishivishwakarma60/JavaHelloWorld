@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/rishivishwakarma60/JavaHelloWorld'
+                git branch: 'main', url: 'https://github.com/rishivishwakarma60/JavaHelloWorld'
             }
         }
 
