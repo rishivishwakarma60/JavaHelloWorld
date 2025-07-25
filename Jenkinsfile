@@ -4,35 +4,34 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git url: 'https://github.com/rishivishwakarma60/JavaHelloWorld', branch: 'main'
+                git 'https://github.com/rishivishwakarma60/JavaHelloWorld'
             }
         }
 
         stage('Compile Java') {
             steps {
                 echo '🔧 Compiling Java...'
-                sh 'mkdir -p build'
-                sh 'javac -d build src/HelloWorld.java'
+                bat 'javac HelloWorld.java'
             }
         }
 
         stage('Run Java Program') {
             steps {
                 echo '🚀 Running Java Program...'
-                sh 'java -cp build HelloWorld'
+                bat 'java HelloWorld'
             }
         }
 
         stage('Archive Class File') {
             steps {
-                archiveArtifacts artifacts: 'build/HelloWorld.class', fingerprint: true
+                archiveArtifacts artifacts: '*.class', fingerprint: true
             }
         }
     }
 
     post {
         success {
-            echo '✅ Build Successful!'
+            echo '✅ Build Succeeded!'
         }
         failure {
             echo '❌ Build Failed!'
