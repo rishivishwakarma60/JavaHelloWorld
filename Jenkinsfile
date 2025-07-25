@@ -2,12 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Repository') {
-            steps {
-                git branch: 'main', url: 'https://github.com/rishivishwakarma60/JavaHelloWorld'
-            }
-        }
-
         stage('Compile Java') {
             steps {
                 echo '🔧 Compiling Java...'
